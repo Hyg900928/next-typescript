@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "jsx": "react",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./pages/*"],
+      "STORE/*": ["./store/*"],
+      "API/*": ["./API/*"],
+      "UTILS/*": ["./utils/*"],
+    }
+  },
+  "include": [
+    "./pages/**/*.ts",
+    "./pages/**/*.tsx",
+    "./store/**/.ts",
+    "./typings/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "next.config.js",
+    "babel.config.js",
+    "ecosystem.config.js",
+    "server"
+  ]
+}
