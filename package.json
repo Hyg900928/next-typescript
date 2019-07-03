@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node --project tsconfig.server.json server/server.ts",
-    "dev": "pm2 start ecosystem.config.js"
+    "dev": "npm run clean && pm2 start ecosystem.config.js",
+    "build-prod": "npm run clean && cross-env NODE_ENV=production DOMAIN_USE=production next build",
+    "start-prod": "cross-env NODE_ENV=production DOMAIN_USE=production  PORT=${npm_config_aPort} pm2 start ts-node -- -P tsconfig.server.json ./server/server.ts",
+    "clean": "rimraf dist_*"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +39,8 @@
     "@types/react-dom": "^16.8.4",
     "@umijs/fabric": "^1.1.0",
     "@zeit/next-typescript": "^1.1.1",
+    "cross-env": "^5.2.0",
+    "rimraf": "^2.6.3",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2",
     "webpack": "^4.35.0"
