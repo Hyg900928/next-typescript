@@ -4,10 +4,10 @@
   "description": "this is a ssr project with next.js ",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node --project tsconfig.server.json server/server.ts",
+    "start": "node server/server.js",
     "dev": "npm run clean && pm2 start ecosystem.config.js",
     "build-prod": "npm run clean && cross-env NODE_ENV=production DOMAIN_USE=production next build",
-    "start-prod": "cross-env NODE_ENV=production DOMAIN_USE=production  PORT=${npm_config_aPort} pm2 start ts-node -- -P tsconfig.server.json ./server/server.ts",
+    "start-prod": "cross-env NODE_ENV=production DOMAIN_USE=production  PORT=${npm_config_aPort} pm2 start server/server.js --name ${npm_package_name}-prod",
     "clean": "rimraf dist_*"
   },
   "author": "",

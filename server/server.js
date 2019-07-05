@@ -1,7 +1,8 @@
-import Koa from 'koa'
-import Router from 'koa-router'
-import next from 'next'
-import mobxReact from 'mobx-react'
+
+const Koa = require('koa')
+const Router = require('koa-router')
+const next = require('next')
+const mobxReact = require('mobx-react')
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 3000

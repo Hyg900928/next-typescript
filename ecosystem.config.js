@@ -9,11 +9,11 @@ module.exports = {
     // First application
     {
       // 指定解析器, 默认使用的是Node
-      interpreter: "./node_modules/.bin/ts-node",
+      // interpreter: "./node_modules/.bin/ts-node",
       // 解释器参数
-      interpreter_args: "--project tsconfig.server.json",
+      // interpreter_args: "--project tsconfig.server.json",
       name: 'react-ssr',
-      script: 'server/server.ts',
+      script: 'server/server.js',
       env: {
         "NODE_ENV": "development",
         COMMON_VARIABLE: "true",
