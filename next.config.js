@@ -25,6 +25,7 @@ const nextConfig = {
     // Will be available on both server and client
     staticFolder: "/static",
   },
+  useFileSystemPublicRoutes: false,
   webpack(config, { dev }) {
     // Further custom configuration here
     config.resolve = {
