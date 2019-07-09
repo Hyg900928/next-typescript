@@ -1,6 +1,6 @@
 const presets = [
     ["next/babel"],
-    "@zeit/next-typescript/babel",
+    // "@zeit/next-typescript/babel",
 ];
 const plugins = [
     ["@babel/plugin-proposal-decorators", {

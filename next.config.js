@@ -1,4 +1,4 @@
-const withTypescript = require("@zeit/next-typescript");
+// const withTypescript = require("@zeit/next-typescript");
 const path = require("path");
 const webpack = require('webpack')
 const widthPlugins = require("next-compose-plugins");
@@ -129,5 +129,5 @@ module.exports = widthPlugins([
         },
     }],
     [withProgressBar],
-    [withTypescript],
+    // [withTypescript],
 ], nextConfig)

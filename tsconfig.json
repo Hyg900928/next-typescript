@@ -57,6 +57,7 @@
     "next.config.js",
     "babel.config.js",
     "ecosystem.config.js",
-    "server"
+    "server",
+    "static",
   ]
 }

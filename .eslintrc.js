@@ -32,6 +32,8 @@ module.exports = {
     "dot-notation": 0,
     "no-param-reassign": 0,
     "spaced-comment": 0,
+    "no-trailing-spaces": 0,
+    "@typescript-eslint/no-unused-vars": 0,
   },
   globals: {
     Hyg: true,
