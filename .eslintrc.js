@@ -31,6 +31,7 @@ module.exports = {
     "no-dupe-args": 0,
     "dot-notation": 0,
     "no-param-reassign": 0,
+    "spaced-comment": 0,
   },
   globals: {
     Hyg: true,

@@ -13,7 +13,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "jsx": "react",
+    "jsx": "preserve",
     "sourceMap": true,
     "outDir": "./dist",
     "moduleResolution": "node",
@@ -26,17 +26,29 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./pages/*"],
-      "STORE/*": ["./store/*"],
-      "API/*": ["./API/*"],
-      "UTILS/*": ["./utils/*"],
-    }
+      "@/*": [
+        "./pages/*"
+      ],
+      "STORE/*": [
+        "./store/*"
+      ],
+      "API/*": [
+        "./API/*"
+      ],
+      "UTILS/*": [
+        "./utils/*"
+      ]
+    },
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": [
     "./pages/**/*.ts",
     "./pages/**/*.tsx",
     "./store/**/.ts",
-    "./typings/*",
+    "./typings/*"
   ],
   "exclude": [
     "node_modules",

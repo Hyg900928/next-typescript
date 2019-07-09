@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider, inject, observer } from 'mobx-react'
-import App, { Container, NextAppContext } from 'next/app'
+import App, { Container, AppContext } from 'next/app'
 // import Head from 'next/head'
 import { withRouter } from 'next/router'
 import { BaseLayout } from '@/widgets/layout'
@@ -39,7 +39,7 @@ class PropComponent extends React.Component<PropComponentProps, any> {
 class MyApp extends App<PropComponentProps, any> {
     public rootStore: RootStore;
 
-    static async getInitialProps(context: NextAppContext) {
+    static async getInitialProps(context: AppContext) {
         const { Component, ctx } = context
         let pageProps = {}
 
