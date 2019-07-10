@@ -1,4 +1,4 @@
-// const withTypescript = require("@zeit/next-typescript");
+// const withTypescript = require("@zeit/next-typescript"); // Next.js 9.0 已经内置了typescript,不再需要这个包了
 const path = require("path");
 const webpack = require('webpack')
 const widthPlugins = require("next-compose-plugins");
