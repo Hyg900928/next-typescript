@@ -1,4 +1,3 @@
-/* eslint-disable */
 (function (win, lib) {
     var phoneTypeWidth = 768;
     var phoneTranslateWidth = 540;

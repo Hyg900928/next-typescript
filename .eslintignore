@@ -1,1 +1,3 @@
 /dist_*
+static/**
+node_modules/**

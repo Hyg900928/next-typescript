@@ -34,6 +34,7 @@ module.exports = {
     "spaced-comment": 0,
     "no-trailing-spaces": 0,
     "@typescript-eslint/no-unused-vars": 0,
+    "consistent-return": 0,
   },
   globals: {
     Hyg: true,

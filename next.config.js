@@ -15,6 +15,14 @@ const domain_use = process.env.DOMAIN_USE;
 const PROD_ENV = "production";
 const DEV_ENV = "development";
 
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = (file) => { }
+}
+
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = file => {}
+}
+
 const nextConfig = {
   distDir: `dist_${domain_use}`,
   generateBuildId: async () => {
@@ -26,7 +34,28 @@ const nextConfig = {
     staticFolder: "/static",
   },
   useFileSystemPublicRoutes: false,
-  webpack(config, { dev }) {
+  webpack(config, { dev, isServer }) {
+    console.log('isServer', isServer)
+    if (isServer) {
+      const antStyles = /antd\/.*?\/style\/css.*?/
+      const origExternals = [...config.externals]
+      config.externals = [
+        (context, request, callback) => {
+          if (request.match(antStyles)) return callback()
+          if (typeof origExternals[0] === 'function') {
+            origExternals[0](context, request, callback)
+          } else {
+            callback()
+          }
+        },
+        ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+      ]
+
+      config.module.rules.unshift({
+        test: antStyles,
+        use: 'null-loader',
+      })
+    }
     // Further custom configuration here
     config.resolve = {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
@@ -47,19 +76,6 @@ const nextConfig = {
         __PROD__: domain_use === PROD_ENV,
       }),
     );
-    if (dev) {
-      config.module.rules.push({
-        test: /\.js$/,
-        enforce: "pre",
-        exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          // Emit errors as warnings for dev to not break webpack build.
-          // Eslint errors are shown in console for dev, yay :-)
-          // emitWarning: dev,
-        },
-      });
-    }
     return config;
   },
   exportPathMap() {
@@ -70,19 +86,13 @@ const nextConfig = {
 };
 
 module.exports = widthPlugins([
-    [withSass, {
+    // [withTypescript],
+    [withCss, {
         cssModules: true,
         cssLoaderOptions: {
-            localIdentName: '[[path]___[local]___[hash:base64:5]]',
-        },
-        sassLoaderOptions: {
-
-        },
-        postcssLoaderOptions: {
-            config: {
-                path: './',
-            },
-        },
+            localIdentName: '[local]',
+        }
+        
     }],
     [withLess, {
         cssModules: true,
@@ -97,10 +107,18 @@ module.exports = widthPlugins([
             },
         },
     }],
-    [withCss, {
+    [withSass, {
         cssModules: true,
         cssLoaderOptions: {
-            localIdentName: '[local]',
+            localIdentName: '[[path]___[local]___[hash:base64:5]]',
+        },
+        sassLoaderOptions: {
+
+        },
+        postcssLoaderOptions: {
+            config: {
+                path: './',
+            },
         },
     }],
     [optimizedImages, {
@@ -130,5 +148,5 @@ module.exports = widthPlugins([
         },
     }],
     [withProgressBar],
-    // [withTypescript],
+
 ], nextConfig)
